@@ -21,6 +21,31 @@ int64_t Utils::getRandomInt64(int64_t minValue, int64_t maxValue) {
   return distribution(generator);
 }
 
+char Utils::getRandomChar(uint_fast8_t charTypeMask) {
+  int c;
+  do {
+    int val = getRandomInt(0, 61);
+    if (val < 26) {
+      c = 'a' + val;
+    } else if (val < 52) {
+      c = 'A' + val - 26;
+    } else {
+      c = '0' + val - 52;
+    }
+  } while (!((std::islower(c) && (charTypeMask & CharType::LOWER)) ||
+             (std::isupper(c) && (charTypeMask & CharType::UPPER)) ||
+             (std::isdigit(c) && (charTypeMask & CharType::DIGIT))));
+  return static_cast<char>(c);
+}
+
+std::string Utils::getRandomString(int length, uint_fast8_t charTypeMask) {
+  std::string s;
+  for (int i = 0; i < length; ++i) {
+    s += getRandomChar(charTypeMask);
+  }
+  return s;
+}
+
 std::vector<int> Utils::getShuffledSequence(int size, int startFrom) {
   std::vector<int> seq(size);
   for (int i = 0; i < size; ++i) {
