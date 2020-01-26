@@ -1,0 +1,31 @@
+#ifndef OLYMPIAD_TEST_GENERATOR_EXAMPLE_GENERATOR_H
+#define OLYMPIAD_TEST_GENERATOR_EXAMPLE_GENERATOR_H
+
+#include "generator.h"
+#include "utils.h"
+
+struct ExampleTestParameters {
+  int maxValue;
+
+  explicit ExampleTestParameters(int maxValue) : maxValue(maxValue) {}
+};
+
+class ExampleGenerator : public Generator<ExampleTestParameters> {
+ public:
+  ExampleGenerator() : Generator<ExampleTestParameters>("sum", "sum-tests") {}
+
+ private:
+  void generateInput(std::ofstream& inputFile, const ExampleTestParameters& testParameters) const override {
+    Utils utils;
+    inputFile << utils.getRandomInt(1, testParameters.maxValue) << " "
+              << utils.getRandomInt(1, testParameters.maxValue) << "\n";
+  }
+
+  void solve(std::ifstream& input, std::ofstream& output) const override {
+    int a, b;
+    input >> a >> b;
+    output << a + b << "\n";
+  }
+};
+
+#endif //OLYMPIAD_TEST_GENERATOR_EXAMPLE_GENERATOR_H
