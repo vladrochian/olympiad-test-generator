@@ -3,4 +3,4 @@ project(olympiad_test_generator)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(olympiad_test_generator main.cpp)
+add_executable(olympiad_test_generator main.cpp generator.h)
