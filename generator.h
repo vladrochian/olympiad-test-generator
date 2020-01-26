@@ -4,10 +4,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "utils.h"
 
 template<class TestParameters> class Generator {
  public:
-  virtual void generate(const std::vector<TestParameters>& testParameters) const final {
+  virtual void generate(const std::vector<TestParameters>& testParameters) final {
     int numberOfTests = static_cast<int>(testParameters.size());
     for (int i = 0; i < numberOfTests; ++i) {
       std::string inputPath = directory + "/" + getInputFileName(i);
@@ -25,7 +26,8 @@ template<class TestParameters> class Generator {
 
  protected:
   explicit Generator(std::string problemName, std::string directory, bool generateOkFiles)
-      : problemName(std::move(problemName)), directory(std::move(directory)), generateOkFiles(generateOkFiles) {
+      : problemName(std::move(problemName)), directory(std::move(directory)), generateOkFiles(generateOkFiles),
+        utils() {
   }
 
   /**
@@ -52,7 +54,7 @@ template<class TestParameters> class Generator {
    *   @param inputFile       A stream to the generated input
    *   @param testParameters  The configuration for the current test (limits, constraints)
    */
-  virtual void generateInput(std::ofstream& inputFile, const TestParameters& testParameters) const = 0;
+  virtual void generateInput(std::ofstream& inputFile, const TestParameters& testParameters) = 0;
 
   /**
    *   Function for generating an ok file based on an input (basically the official solution)
@@ -63,6 +65,8 @@ template<class TestParameters> class Generator {
   virtual void solve(std::ifstream& input, std::ofstream& output) const {
     throw std::logic_error("Not implemented");
   }
+
+  Utils utils;
 
  private:
   std::string problemName;

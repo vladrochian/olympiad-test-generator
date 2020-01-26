@@ -2,7 +2,6 @@
 #define OLYMPIAD_TEST_GENERATOR_EXAMPLE_GENERATOR_H
 
 #include "generator.h"
-#include "utils.h"
 
 struct ExampleTestParameters {
   int maxValue;
@@ -15,8 +14,7 @@ class ExampleGenerator : public Generator<ExampleTestParameters> {
   ExampleGenerator() : Generator<ExampleTestParameters>("sum", "sum-tests", true) {}
 
  private:
-  void generateInput(std::ofstream& inputFile, const ExampleTestParameters& testParameters) const override {
-    Utils utils;
+  void generateInput(std::ofstream& inputFile, const ExampleTestParameters& testParameters) override {
     inputFile << utils.getRandomInt(1, testParameters.maxValue) << " "
               << utils.getRandomInt(1, testParameters.maxValue) << "\n";
   }
