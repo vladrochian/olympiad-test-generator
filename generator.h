@@ -7,10 +7,6 @@
 
 template<class TestParameters> class Generator {
  public:
-  explicit Generator(std::string problemName, std::string directory, bool generateOkFiles)
-      : problemName(std::move(problemName)), directory(std::move(directory)), generateOkFiles(generateOkFiles) {
-  }
-
   virtual void generate(const std::vector<TestParameters>& testParameters) const final {
     int numberOfTests = static_cast<int>(testParameters.size());
     for (int i = 0; i < numberOfTests; ++i) {
@@ -28,6 +24,10 @@ template<class TestParameters> class Generator {
   }
 
  protected:
+  explicit Generator(std::string problemName, std::string directory, bool generateOkFiles)
+      : problemName(std::move(problemName)), directory(std::move(directory)), generateOkFiles(generateOkFiles) {
+  }
+
   /**
    * The pattern for input file names
    * @param index  The number of the test
