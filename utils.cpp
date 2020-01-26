@@ -21,6 +21,11 @@ int64_t Utils::getRandomInt64(int64_t minValue, int64_t maxValue) {
   return distribution(generator);
 }
 
+char Utils::getRandomChar(char minValue, char maxValue) {
+  std::uniform_int_distribution<char> distribution(minValue, maxValue);
+  return distribution(generator);
+}
+
 char Utils::getRandomChar(uint_fast8_t charTypeMask) {
   int c;
   do {
@@ -36,6 +41,14 @@ char Utils::getRandomChar(uint_fast8_t charTypeMask) {
              (std::isupper(c) && (charTypeMask & CharType::UPPER)) ||
              (std::isdigit(c) && (charTypeMask & CharType::DIGIT))));
   return static_cast<char>(c);
+}
+
+std::string Utils::getRandomString(int length, char minValue, char maxValue) {
+  std::string s;
+  for (int i = 0; i < length; ++i) {
+    s += getRandomChar(minValue, maxValue);
+  }
+  return s;
 }
 
 std::string Utils::getRandomString(int length, uint_fast8_t charTypeMask) {

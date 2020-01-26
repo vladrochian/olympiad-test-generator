@@ -17,7 +17,9 @@ class Utils {
   bool getRandomBool();
   int getRandomInt(int minValue, int maxValue);
   int64_t getRandomInt64(int64_t minValue, int64_t maxValue);
+  char getRandomChar(char minValue, char maxValue);
   char getRandomChar(uint_fast8_t charTypeMask = CharType::LOWER);
+  std::string getRandomString(int length, char minValue, char maxValue);
   std::string getRandomString(int length, uint_fast8_t charTypeMask = CharType::LOWER);
   std::vector<int> getShuffledSequence(int size, int startFrom = 1);
   std::vector<std::pair<int, int>> getTree(int nodeCount, int startIndexFrom = 1);
