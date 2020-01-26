@@ -12,7 +12,7 @@ struct ExampleTestParameters {
 
 class ExampleGenerator : public Generator<ExampleTestParameters> {
  public:
-  ExampleGenerator() : Generator<ExampleTestParameters>("sum", "sum-tests") {}
+  ExampleGenerator() : Generator<ExampleTestParameters>("sum", "sum-tests", true) {}
 
  private:
   void generateInput(std::ofstream& inputFile, const ExampleTestParameters& testParameters) const override {
