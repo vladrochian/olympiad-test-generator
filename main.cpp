@@ -1,7 +1,7 @@
 #include "example_generator.h"
 
 int main() {
-  ExampleGenerator generator;
+  ExampleGenerator generator(5);
   generator.generate({
     ExampleTestParameters(100),
     ExampleTestParameters(100),
