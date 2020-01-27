@@ -31,7 +31,7 @@ Below you can find the steps for creating tests for a problem:
   omitted if the problem has multiple solutions and verification is done by a program, or if the solution is not
   available yet - in this case, set `generateOkFiles` to `false` in the constructor;
 - if the naming convention for the test files is different from the default (0-name.in, 0-name.ok), you can override the
-  `getInputFileName` and `getOutputFileName` methods;
+  `getInputFileName` and `getOkFileName` methods;
 - call the inherited `generate` function. Pass as argument a `vector` containing the configuration for each test
   (limits, constraints - this should help you with creating data sets for partial scoring). The tests will be numbered
   in the order you provided, starting from 0 (alternatively you can set `testIndexStart` to other value in the
