@@ -30,7 +30,7 @@ class Utils {
   std::vector<std::pair<int, int>>
   addEdgesToGraph(const std::vector<std::pair<int, int>>& edges, int nodeCount, int totalEdgeCount,
                   int startIndexFrom);
-  std::default_random_engine generator;
+  std::mt19937 generator;
 };
 
 #endif //OLYMPIAD_TEST_GENERATOR_UTILS_H

@@ -1,3 +1,5 @@
 cmake-build-debug
 cmake-build-release
 .idea
+sum-tests
+dfs-tests

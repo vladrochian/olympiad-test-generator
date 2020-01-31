@@ -26,10 +26,12 @@ Below you can find the steps for creating tests for a problem:
   random generation of various values and objects, the [Utils](utils.h) class is provided and instantiated as a member
   in the generator;
 - implement the `solve` method for creating ok files for existing input files. Here you should basically put your
-  official solution. The reading and writing is done through the streams passed as arguments. Don't worry about opening
-  and closing the files, as the generator does this automatically based on the naming convention. This method can be
-  omitted if the problem has multiple solutions and verification is done by a program, or if the solution is not
-  available yet - in this case, set `generateOkFiles` to `false` in the constructor;
+  official solution (an example of how one can be easily adapted can be found
+  [here](example_generator_with_official_solution.h)). The reading and writing is done through the streams passed as
+  arguments (if you prefer the `cstdio` way, you may as well use bash scripts instead of this tool). Don't worry about
+  opening and closing the files, as the generator does this automatically based on the naming convention. The `solve`
+  method can be omitted if the problem has multiple solutions and verification is done by a program, or if the solution
+  is not available yet - in this case, set `generateOkFiles` to `false` in the constructor;
 - if the naming convention for the test files is different from the default (0-name.in, 0-name.ok), you can override the
   `getInputFileName` and `getOkFileName` methods;
 - call the inherited `generate` function. Pass as argument a `vector` containing the configuration for each test
